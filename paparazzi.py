@@ -49,11 +49,10 @@ from PyQt4 import QtCore, QtGui, QtWebKit
 class Capturer(object):
     """A class to capture webpages as images"""
 
-    def __init__(self, url, filename, size, resolution):
+    def __init__(self, url, filename, size):
         self.url = url
         self.filename = filename
         self.size = size
-        self.resolution = resolution
         self.saw_initial_layout = False
         self.saw_document_complete = False
 
@@ -124,7 +123,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     app = QtGui.QApplication(sys.argv)
-    c = Capturer(str(args.url), str(args.filename), args.size, args.resolution)
+    c = Capturer(str(args.url), str(args.filename), args.size)
 
     if c.checkURL():
         c.capture()
